@@ -1,0 +1,203 @@
+$colorBlack: #040404;
+$colorWhite: #FFFFFF;
+$colorGreyL: #F3F3F3;
+$colorGreyD: #E5E5E5;
+$colorTur:   #31BEC5;
+
+@mixin flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin pageContainer {
+    width: calc(100% - 80px);
+    height: calc(100% - 200px);
+    background: $colorGreyD;
+    padding: 60px 40px;
+}
+
+@mixin pageHeadline {
+    width: 320px;
+    margin-bottom: 30px;
+    span {
+        font-size: 32px;
+        color: $colorBlack;
+    }
+    .line {
+        width: 100%;
+        height: 5px;
+        margin-top: 5px;
+        background: linear-gradient(90deg, rgba(49, 190, 197, 0.5) 0%, rgba(49, 190, 197, 0) 93.2%);
+        border-radius: 1px;
+    }
+}
+
+@mixin pageContent {
+    background: $colorWhite;
+    box-shadow: 0px 5px 3px rgba(4, 4, 4, 0.1);
+    height: calc(100% - 118px);
+    min-width: 550px;
+    min-height: 290px;
+    padding: 20px 40px;
+    .content-header {
+        height: 40px;
+        margin-bottom: 25px;
+        .header-search {
+            @include flex();
+            justify-content: flex-start;
+            img {
+                margin-right: 15px;
+            }
+            input {
+                border: none;
+                outline: none;
+                font-weight: inherit;
+                width: 50%;
+                height: 30px;
+                font-size: 16px;
+            }
+        }
+        
+    }
+    .content-table {
+        height: calc(100% - 65px);
+        width: 100%;
+        .table-headline {
+            height: 30px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid $colorGreyD;
+        }
+        .table-body {
+            height: calc(100% - 100px);
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        .table-footer {
+            height: 50px;
+            cursor: pointer;
+            @include flex();
+            justify-content: flex-start;
+            align-items: flex-end;
+        }
+    }
+}
+
+@mixin tableContract {
+    .content-item {
+        display: grid;
+        grid-template-columns: minmax(250px, 35%) minmax(300px, 65%);
+        min-height: 40px;
+        border-bottom: 1px solid $colorGreyD;
+        align-items: center;
+        .item-header {
+            font-weight: bold;
+            padding: 10px 15px;
+            padding-right: 25px;
+            border-right: 1px solid $colorGreyD;
+        }
+        .item-entry {
+            padding: 10px 0 10px 50px;
+        }
+        .detail {
+            padding: 10px 25px 10px 35px;
+        }
+        .detailEntry {
+            padding: 10px 0 10px 70px;
+        }
+    }
+    .content-item:last-child {
+        border-bottom: none;
+    }
+}
+
+@mixin tableList {
+    width: 100%;
+    height: 30px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid $colorGreyD;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 60px minmax(200px, calc(80% - 60px)) minmax(100px, calc(20% - 60px)) 60px;
+    img {
+        margin: 0 auto;
+    }
+    .date {
+        text-align: center;
+    }
+    .name {
+        cursor: pointer;
+        font-weight: bolder;
+    }
+    .delete {
+        cursor: pointer;
+    }
+}
+
+@mixin infoHeader {
+    height: 40px;
+    margin-bottom: 30px;
+    @include flex();
+    justify-content: space-between;
+    .header-back {
+        @include flex();
+        cursor: pointer;
+        img {
+            margin-right: 10px;
+        }
+        span {
+            font-weight: bold;
+        }
+    }
+    .header-options {
+        cursor: pointer;
+        .change, .download {
+            margin-right: 10px;
+        }
+        img {
+            height: 22px;
+            width: auto;
+        }
+    }
+}
+
+@mixin newHeader {
+    height: 40px;
+    margin-bottom: 30px;
+    @include flex();
+    justify-content: space-between;
+    .header-back {
+        @include flex();
+        cursor: pointer;
+        img {
+            margin-right: 10px;
+        }
+        span {
+            font-weight: bold;
+        }
+    }
+    .header-button {
+        cursor: pointer;
+        span {
+            font-weight: bold;
+        }
+    }
+}
+
+@mixin newContent {
+    height: calc(100% - 70px);
+    width: 100%;
+    overflow-y: auto;
+    @include tableContract();
+    .content-item {
+        .item-entry {
+            input {
+                width: 95%;
+                font-family: inherit;
+                font-size: 15px;
+                border: none;
+                outline: none;
+            }
+        }
+    }
+}
